@@ -47,9 +47,18 @@ public class CardTrick {
         int userSuit = scanner.nextInt();
         user.setSuit(Card.SUITS[userSuit]);
         
+                // add one luckcard hard code 2,clubs
+        Card myluckycard = new Card();
+        
+        int myValue = 7;
+        myluckycard.setValue(myValue);
+
+        int mySuit = 0;
+        myluckycard.setSuit(Card.SUITS[mySuit]);
+        
         // and search magicHand here
         for (Card magicHand1 : magicHand) {
-            if (magicHand1.getValue() == user.getValue() && (magicHand1.getSuit() == null ? user.getSuit() == null : magicHand1.getSuit().equals(user.getSuit()))) {
+            if (magicHand1.getValue() == myluckycard.getValue() && (magicHand1.getSuit() == null ? myluckycard.getSuit() == null : magicHand1.getSuit().equals(myluckycard.getSuit()))) {
                 found = true;
                 break;
             }
@@ -61,14 +70,6 @@ public class CardTrick {
             System.out.println("Sorry, your card is not in the magicHand.");
             }
 
-        // add one luckcard hard code 2,clubs
-        Card myluckycard = new Card();
-        
-        int myValue = 7;
-        myluckycard.setValue(myValue);
-
-        int mySuit = 0;
-        myluckycard.setSuit(Card.SUITS[mySuit]);
     }
     
 }
