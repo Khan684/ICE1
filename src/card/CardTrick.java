@@ -62,6 +62,13 @@ public class CardTrick {
             }
 
         // add one luckcard hard code 2,clubs
+        Card myluckycard = new Card();
+        
+        int myValue = 7;
+        myluckycard.setValue(myValue);
+
+        int mySuit = 0;
+        myluckycard.setSuit(Card.SUITS[mySuit]);
     }
     
 }
