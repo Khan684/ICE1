@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package card;
+import java.util.Random;
+import java.util.Scanner;
 
 /**
  * A class that fills a magic hand of 7 cards with random Card Objects
@@ -14,18 +16,51 @@ public class CardTrick {
     
     public static void main(String[] args)
     {
+        boolean found = false;
+        Random random = new Random();
+        Scanner scanner = new Scanner(System.in);
         Card[] magicHand = new Card[7];
         
         for (int i=0; i<magicHand.length; i++)
         {
             Card c = new Card();
-            //c.setValue(insert call to random number generator here)
+                        //c.setValue(insert call to random number generator here)
+            int value = random.nextInt(13)+1;
+            c.setValue(value);
             //c.setSuit(Card.SUITS[insert call to random number between 0-3 here])
+            int suit = random.nextInt(4);
+            c.setSuit(Card.SUITS[suit]);
+            
+            magicHand[i] = c;
+        }
+        for(int i=0;i<7;i++){
+             System.out.println("" + magicHand[i].getValue() + " " + magicHand[i].getSuit());
         }
         
         //insert code to ask the user for Card value and suit, create their card
+        Card user = new Card();
+        System.out.print("Enter the Card value (1-13): ");
+        int userValue = scanner.nextInt();
+        user.setValue(userValue);
+
+        System.out.print("Enter the Card suit (0-3): ");
+        int userSuit = scanner.nextInt();
+        user.setSuit(Card.SUITS[userSuit]);
+        
         // and search magicHand here
+        for (Card magicHand1 : magicHand) {
+            if (magicHand1.getValue() == user.getValue() && (magicHand1.getSuit() == null ? user.getSuit() == null : magicHand1.getSuit().equals(user.getSuit()))) {
+                found = true;
+                break;
+            }
+        }
         //Then report the result here
+        if (found){
+            System.out.println("Congratulations! Your card is in the magicHand.");
+            }else{
+            System.out.println("Sorry, your card is not in the magicHand.");
+            }
+
         // add one luckcard hard code 2,clubs
     }
     
